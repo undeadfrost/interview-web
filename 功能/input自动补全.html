@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>input自动补全</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        .autocomplete {
+            width: 200px;
+            margin: auto;
+        }
+
+        .complete {
+        }
+    </style>
+</head>
+<body>
+<div class="autocomplete">
+    <input type="text" placeholder="自动补全">
+    <ul class="complete"></ul>
+</div>
+<script>
+	const arr = ['a', 'apple', 'abandon', 'bilibili', 'beep', 'before', 'become', 'being', 'highmaintains', 'by', 'bye', 'banana']
+	var input = document.querySelector("input")
+	var ul = document.querySelector("ul")
+	input.addEventListener("input", function (e) {
+		ul.innerHTML = ""
+		let select = e.target.value
+		if (select.length > 0) {
+			complete(e.target.value)
+		}
+	})
+
+	function complete(str) {
+		arr.forEach(function (text) {
+			if (text.startsWith(str)) {
+				let li = document.createElement("li")
+				li.innerText = text
+				ul.appendChild(li)
+			}
+		})
+	}
+
+	ul.addEventListener("click", function (e) {
+		if (e.target.tagName.toLowerCase() === "li") {
+			input.value = e.target.innerText
+			ul.innerHTML = ""
+		}
+	})
+</script>
+</body>
+</html>

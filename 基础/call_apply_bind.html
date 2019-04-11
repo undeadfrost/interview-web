@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>call、apply、bind</title>
+</head>
+<body>
+<script>
+	var xw = {
+		name: "小王",
+		gender: "男",
+		age: 24,
+		say: function (text) {
+			console.log(text)
+			alert(this.name + " , " + this.gender + " ,今年" + this.age);
+		}
+	}
+	var xh = {
+		name: "小红",
+		gender: "女",
+		age: 18
+	}
+	xw.say.call(xh, 66)
+</script>
+</body>
+</html>

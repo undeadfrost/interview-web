@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双向绑定</title>
+</head>
+<body>
+手写一个简单双向绑定<br/>
+<input type="text" id="model"><br/>
+<div id="modelText"></div>
+<script>
+	let model = document.querySelector('#model')
+	let modelText = document.querySelector('#modelText')
+	let text = {}
+	Object.defineProperty(text, 'name', {
+		get: function () {
+
+		},
+		set: function (value) {
+			model.value = value
+			modelText.textContent = value
+		}
+	})
+
+	text.name = 'test name'
+	model.addEventListener('keyup', function () {
+		text.name = this.value
+	})
+</script>
+</body>
+</html>

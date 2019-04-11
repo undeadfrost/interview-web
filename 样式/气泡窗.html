@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>气泡窗口</title>
+    <style>
+        #test {
+            width: 0px;
+            height: 0px;
+            line-height: 0px;
+            border-width: 50px;
+            border-style: solid;
+            border-color: #09F transparent transparent;
+        }
+
+        .pop {
+            width: 100px;
+            height: 50px;
+            border: 1px solid #000;
+            position: relative;
+        }
+
+        .pop:before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            bottom: -20px;
+            border-width: 10px;
+            border-style: solid;
+            border-top-color: #000;
+            color: transparent;
+        }
+
+        .pop:after {
+            content: '';
+            position: absolute;
+            left: 10px;
+            bottom: -19px;
+            border-width: 10px;
+            border-style: solid;
+            border-color: #fff transparent transparent;
+        }
+    </style>
+</head>
+<body>
+
+<div class="pop"></div>
+<!--<div id="test"></div>-->
+</body>
+</html>

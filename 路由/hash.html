@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>前端路由</title>
+</head>
+<body>
+<a href="#/a">pageALink</a>
+<a href="#/b">pageBLink</a>
+<span id='body'></span>
+<script>
+	window.addEventListener('hashchange', (e) => {
+		document.getElementById('body').innerHTML = window.location
+	}, false)
+</script>
+</body>
+</html>

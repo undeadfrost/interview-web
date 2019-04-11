@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>javascript动画</title>
+    <style>
+        .progress {
+            width: 0;
+            height: 20px;
+            background-color: lightblue;
+            line-height: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="p1" class="progress">0%</div>
+<button id="btn1">Run setInterval</button>
+<div id="p2" class="progress">0%</div>
+<button id="btn2">Run setTimeout</button>
+<div id="p3" class="progress">0%</div>
+<button id="btn3">Run requestAnimationFrame</button>
+<script>
+	function f1() {
+		let btn1 = document.querySelector("#btn1")
+		let p1 = document.querySelector("#p1")
+		btn1.addEventListener("click", function () {
+			let timer = setInterval(function () {
+				if (p1.offsetWidth < 500) {
+					p1.style.width = p1.offsetWidth + 5 + 'px'
+					p1.innerText = p1.offsetWidth / 5 + '%'
+				} else {
+					clearInterval(timer)
+				}
+			}, 17)
+		})
+	}
+
+	function f2() {
+		let btn2 = document.querySelector("#btn2")
+		let p2 = document.querySelector("#p2")
+		btn2.addEventListener("click", function () {
+			let timer = setTimeout(function fn() {
+				if (p2.offsetWidth < 500) {
+					p2.style.width = p2.offsetWidth + 5 + 'px'
+					p2.innerText = p2.offsetWidth / 5 + '%'
+					timer = setTimeout(fn, 17)
+				} else {
+					clearTimeout(timer)
+				}
+			}, 17)
+		})
+	}
+
+	function f3() {
+		let btn3 = document.querySelector("#btn3")
+		let p3 = document.querySelector("#p3")
+		btn3.addEventListener("click", function () {
+			requestAnimationFrame(function fn() {
+				if (p3.offsetWidth < 500) {
+					p3.style.width = p3.offsetWidth + 5 + 'px'
+					p3.innerText = p3.offsetWidth / 5 + '%'
+					requestAnimationFrame(fn)
+				}
+			})
+		})
+	}
+
+	f1()
+	f2()
+	f3()
+</script>
+</body>
+</html>
