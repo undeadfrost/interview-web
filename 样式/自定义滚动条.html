@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义滚动条</title>
+    <style>
+        html {
+            --maxWidth: 1284px;
+            scrollbar-color: linear-gradient(to bottom, #ff8a00, #da1b60);
+            scrollbar-width: 30px;
+            overflow-x: hidden
+        }
+
+        html::-webkit-scrollbar {
+            width: 10px;
+            height: 10px
+        }
+
+        html::-webkit-scrollbar-thumb {
+            background: -webkit-gradient(linear, left top, left bottom, from(#ff8a00), to(#da1b60));
+            background: linear-gradient(to bottom, #ff8a00, #da1b60);
+            border-radius: 30px;
+            -webkit-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .25), inset -2px -2px 2px rgba(0, 0, 0, .25);
+            box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .25), inset -2px -2px 2px rgba(0, 0, 0, .25)
+        }
+
+        html::-webkit-scrollbar-track {
+            background: #fff
+        }
+    </style>
+</head>
+<body>
+<div style="height: 100px">111</div>
+<div style="height: 100px">111</div>
+<div style="height: 100px">111</div>
+<div style="height: 100px">111</div>
+<div style="height: 100px">111</div>
+<div style="height: 100px">111</div>
+<div style="height: 100px">111</div>
+<div style="height: 100px">111</div>
+<div style="height: 100px">111</div>
+<div style="height: 100px">111</div>
+<div style="height: 100px">111</div>
+<div style="height: 100px">111</div>
+<div style="height: 100px">111</div>
+<div style="height: 100px">111</div>
+<div style="height: 100px">111</div>
+<div style="height: 100px">111</div>
+<div style="height: 100px">111</div>
+<div style="height: 100px">111</div>
+</body>
+</html>
