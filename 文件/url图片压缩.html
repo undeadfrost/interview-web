@@ -7,7 +7,6 @@
 <body>
 <script>
 	function getBase64(img, width, height) { //width、height调用时传入具体像素值，控制大小 ,不传则默认图像大小
-		console.log(img.src.length)
 		var canvas = document.createElement("canvas");
 		canvas.width = width ? width : img.width;
 		canvas.height = height ? height : img.height;
@@ -31,13 +30,33 @@
 		}
 	}
 
+	function base64toBlob(base64) {
+		let arr = base64.split(',');
+		let mime = arr[0].match(/:(.*?);/)[1];
+		console.log(arr[0])
+		let bstr = atob(arr[1]);
+		let n = bstr.length;
+		let u8arr = new Uint8Array(n);
+		while (n--) {
+			u8arr[n] = bstr.charCodeAt(n);
+		}
+		return new Blob([u8arr], {type: mime})
+	}
+
+
 	try {
 		var image = new Image();
+		var begin = new Date();
 		image.crossOrigin = '';
 		image.src = 'https://images.pexels.com/photos/2227826/pexels-photo-2227826.jpeg';
 		image.onload = function () {
+			console.log("从Url获取图片时间：", (new Date() - begin))
 			let baseStr = getBase64(image);
-			console.log(baseStr)
+			console.log("转换Base64时间", (new Date() - begin))
+			let imgBlob = base64toBlob(baseStr)
+			console.log("转换Blob时间", (new Date() - begin))
+			console.log("base64Size=", baseStr.length)
+			console.log("BlobSize=", imgBlob.size)
 		}
 	} catch (err) {
 		console.log(err)
