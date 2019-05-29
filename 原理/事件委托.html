@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件委托</title>
+    <style>
+        ul li {
+            width: 100px;
+            height: 50px;
+            border: 1px solid #000000;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li name="123">123</li>
+    <li name="456">456</li>
+    <li name="789">789</li>
+</ul>
+<script>
+	let ul = document.querySelector("ul");
+	ul.addEventListener("click", function (event) {
+		console.log(event.target.getAttribute("name"));
+	})
+</script>
+</body>
+</html>
